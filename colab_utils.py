@@ -1,17 +1,5 @@
-from google.colab import drive
 import json
 import os
-
-def mount_google_drive(path='/content/gdrive'):
-    """Mounts google drive to notebook's filesystem
-
-    Args:
-        path (str, optional): Where to mount google drive in notebook filesystem. Defaults to '/content/gdrive'.
-    """
-    drive.mount(path)
-    print(f"Mounted goolge drive at: {path}")
-    print(f"Files can be found at  : {path}/My Drive")
-    return
 
 
 def load_env(path="/content/gdrive/My Drive/repos/env.json"):

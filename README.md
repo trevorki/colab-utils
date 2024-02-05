@@ -14,12 +14,6 @@ A few simple functions to simplify the Google Colab / Google Drive / Github work
 
 ## Instructions
 
-Mounting your google drive to notebook file system:
-
-```python
-mount_google_drive()
-```
-
 Load secrets, etc from `env.json` file:
 
 ```python
