@@ -17,9 +17,17 @@ def load_env(path="/content/gdrive/My Drive/repos/env.json"):
     return env
 
 
+def set_git_config(gh_name, gh_email):
+    """Sets git config to allow pushing/pulling"""
+
+    os.system(f'git config --global user.name  "{gh_name}"')  
+    os.system(f'git config --global user.email "{gh_email}"')  
+    return
+
+
 def clone_repo(gh_username, gh_repo_name, gh_token):
-    """Clones github repo
-    """
+    """Clones github repo"""
+
     git_str = f"https://{gh_token}@github.com/{gh_username}/{gh_repo_name}.git"
     os.system(f"git clone {git_str}")  
     return
