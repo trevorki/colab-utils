@@ -14,16 +14,37 @@ A few simple functions to simplify the Google Colab / Google Drive / Github work
 
 ## Instructions
 
-Load secrets, etc from `env.json` file:
+```python
+import colab_utils
+import os
+```
+
+Load github auth info, secrets, etc from `env.json` file to environment variables:
 
 ```python
-env = load_env(path="/content/gdrive/My Drive/repos/env.json")
-gh_token = env["GITHUB_TOKEN"]
+colab_utils.load_env_vars("path/to/env.json")
+```
+
+Set git config parameters from environment variables
+```
+colab_utils.git_set_config()
 ```
 
 
 Clone a repo:
 
 ```python
-clone_repo(gh_username, gh_repo_name, gh_token)
+# navigate to folder where you keep repos
+os.chdir("path/to/repos")
+
+# clone repo
+colab_utils.git_clone_repo("user_name/repo_name")
+
+# navigate into repo folder
+os.chdir("repo_name")
+```
+
+Copy current notebook to google drive folder
+```python
+copy_nb_to_drive("content/<current_notebook_filename>", "path/to/repos/repo_name")
 ```
