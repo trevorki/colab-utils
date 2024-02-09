@@ -1,15 +1,15 @@
 # colab-utils
 
- [Google Colab](https://colab.research.google.com/)  is a nessecary evil sometimes when you need to train large models. But the interface is the absolute worst... little control over where notebooks are stored, difficulty with version control. It practically encourages you to create massive and disorganized notebooks. Did I mention it is the worst?
+ [Google Colab](https://colab.research.google.com/)  is a nessecary evil sometimes when you need to train large models. But the interface is the absolute worst... little control over where notebooks are stored, difficulty with version control, and no access to local functions or modules. It practically encourages you to create massive and disorganized notebooks and never reuse code.
 
-This module provides few simple functions that simplify a Google Colab / Google Drive / Github workflow. *It's not like it makes it EASY... but it makes it a bit less sucky*a. The basic idea is:
+This module provides few simple functions that simplify a Google Colab / Google Drive / Github workflow. *It's not like it makes it EASY... but it makes it a bit less sucky*. The basic idea is:
 
 - Create a repo and work on it until you need a colab notebook for training
 - Open a notebook from repo in Google Colab from github
-- Cone the repo into google drive
+- Clone the repo into google drive
 - Do whatever training, etc the you need to do in the notebook
 - Save model to the repo folder in Google Drive or push to Huggingface Hub
-- Save notebook to github using the `Save a copy in Github` 
+- Save notebook back to github using the `Save a copy in Github` 
 
 Subsequent work can be continued using the same notebook by opening it either from Github or Google Drive.
 
