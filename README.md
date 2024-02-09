@@ -5,10 +5,11 @@
 This module provides few simple functions that simplify a Google Colab / Google Drive / Github workflow. *It's not like it makes it EASY... but it makes it a bit less sucky*a. The basic idea is:
 
 - Create a repo and work on it until you need a colab notebook for training
-- Create a colab notebook where you clone the repo into Google Drive
+- Open a notebook from repo in Google Colab from github
+- Cone the repo into google drive
 - Do whatever training, etc the you need to do in the notebook
-- Save everything to the repo folder in Google Drive
-- Push to changes to Github
+- Save model to the repo folder in Google Drive or push to Huggingface Hub
+- Save notebook to github using the `Save a copy in Github` 
 
 Subsequent work can be continued using the same notebook by opening it either from Github or Google Drive.
 
@@ -24,6 +25,7 @@ Subsequent work can be continued using the same notebook by opening it either fr
     "GH_USERNAME":"<github_username>",
     "GH_NAME":"<firtname lastname>",
     "GH_EMAIL":"<github_email>",
+    "HF_TOKEN": "<huggingface token>"
 }
 ```
 
@@ -46,12 +48,6 @@ Load github auth info, secrets, etc from `env.json` in your google drive to envi
 colab_utils.load_env_vars("/content/gdrive/MyDrive/repos/env.json")
 ```
 
-Set git config parameters from environment variables
-
-```python
-colab_utils.git_set_config()
-```
-
 Clone a repo:
 
 ```python
@@ -63,14 +59,6 @@ colab_utils.git_clone_repo("user_name/repo_name")
 
 # navigate into repo folder
 os.chdir("repo_name")
-```
-
-Copy current notebook to google drive folder
-
-```python
-copy_nb_to_drive(
-    "content/<current_notebook_filename>", 
-    "/content/gdrive/MyDrive/repos/repo_name")
 ```
 
 ## Starting a new notebook
@@ -102,19 +90,4 @@ REPO_FOLDER = f"{PARENT_FOLDER}/{git_repo.split('/')[1]}"
 os.chdir(REPO_FOLDER)
 ```
 
-## Saving notebook to github
 
-The notebook is in `/content/gdrive/MyDrive/Colab Notebooks` so it must be moved to your repo folder before pushing to github. The copy in `/content/gdrive/MyDrive/'Colab Notebooks'` can be safely deleted afterwards if desired.
-
-```python
-### AFTER DOING A BUNCH OF STUFF...
-# save notebook to repo folder
-filename = "notebook-filename.ipynb"
-COLAB_PATH = f"/content/gdrive/MyDrive/'Colab Notebooks'/{filename}"
-colab_utils.copy_nb_to_drive(COLAB_PATH, REPO_FOLDER)
-
-# push to github
-! git add .
-! git commit -m "<Your commit message>"
-! git push
-```
